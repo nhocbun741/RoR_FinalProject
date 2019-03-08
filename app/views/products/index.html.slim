@@ -1,0 +1,18 @@
+div.container
+  = link_to "Create a product", new_product_path
+  table.table.table-hover
+    tr
+      th Name
+      th Price
+      th Currency Code
+      th Quantity
+      th Status
+      th Action
+    - @products.each do |product|
+      tr
+        td= product.Name
+        td= product.Price
+        td= product.CurrencyCode 
+        td= product.Quantity
+        td= product.Status
+        td= link_to "Details", product

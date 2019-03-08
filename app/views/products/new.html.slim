@@ -1,0 +1,40 @@
+h2 Create Product
+= semantic_form_for @product do |f|
+  p Product ID: 
+  = f.input :ProductID
+  p Name: 
+  = f.input :Name
+  p Price: 
+  = f.input :Price
+  p WeightMeasure: 
+  = f.input :WeightMeasure
+  p WeightUnit: 
+  = f.input :WeightUnit, min: 0.01
+  p Description: 
+  = f.input :Description
+  p DateOfSale: 
+  = f.input :DateOfSale
+  p Product Picture: 
+  = f.input :ProductPicUrl
+  p Status: 
+  = f.input :Status
+  p Quantity: 
+  = f.input :Quantity
+  p UoM: 
+  = f.input :UoM
+  p CurrencyCode: 
+  = f.input :CurrencyCode
+  p Width: 
+  = f.input :Width
+  p Depth: 
+  = f.input :Depth
+  p Height: 
+  = f.input :Height
+  p DimUnit: 
+  = f.input :DimUnit
+  p Category: 
+  = f.input :category_id
+  p Supplier: 
+  = f.input :supplier_id
+  p Country: 
+  = f.action :submit
