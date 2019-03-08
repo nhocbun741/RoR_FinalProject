@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_094419) do
+ActiveRecord::Schema.define(version: 2019_03_08_071234) do
 
   create_table "categories", force: :cascade do |t|
     t.string "NameCategory"
-  end
-
-  create_table "column_products_prices", force: :cascade do |t|
+    t.datetime "posted_at", default: "2019-03-08 00:00:00"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", force: :cascade do |t|
@@ -38,12 +38,18 @@ ActiveRecord::Schema.define(version: 2019_03_07_094419) do
     t.integer "supplier_id"
     t.string "Name"
     t.float "Price"
+    t.datetime "posted_at", default: "2019-03-08 00:00:00"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
     t.string "SupplierName"
+    t.datetime "posted_at", default: "2019-03-08 00:00:00"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
