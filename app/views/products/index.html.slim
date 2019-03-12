@@ -1,5 +1,8 @@
 div.container
   = link_to "Create a product", new_product_path
+  - if user_signed_in?
+    = link_to "Sign out", destroy_admin_session_path, :method => :delete
+    a = current_user.email
   br
   div style="display:flex"
     .btn-group
