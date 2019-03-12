@@ -1,0 +1,32 @@
+div.container
+    br
+    div style="display:flex"
+        .btn-group
+            - @categories.first(7).each do |category|
+                button.btn.btn-primary type="button" onclick="window.location.href='#{products_category_path(category)}'" = category.NameCategory
+        .dropdown
+            button.btn.btn-primary.dropdown-toggle data-toggle="dropdown" type="button" 
+                | More Categories
+                span.caret
+            ul.dropdown-menu
+                - @categories.last(@categories.size-7).each do |category|
+                    li
+                        a href="#{products_category_path(category)}"  = category.NameCategory
+
+    table.table.table-hover
+        tr
+            th Name
+            th Price
+            th Quantity
+
+        - @products.each do |product|
+            tr
+                td= product.Name
+                td
+                    = product.Price
+                    = " "
+                    = product.CurrencyCode
+                td= product.Quantity
+                td= product.Status
+    = paginate @products
+
