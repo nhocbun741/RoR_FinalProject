@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_092845) do
+ActiveRecord::Schema.define(version: 2019_03_12_051622) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,27 @@ ActiveRecord::Schema.define(version: 2019_03_11_092845) do
     t.datetime "posted_at", default: "2019-03-08 00:00:00"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.float "unit_price"
+    t.integer "quantity"
+    t.float "total_price"
+    t.integer "product_id"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float "subtotal"
+    t.float "total"
+    t.integer "order_status_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -51,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_092845) do
     t.datetime "posted_at", default: "2019-03-08 00:00:00"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean "active"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end

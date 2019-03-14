@@ -10,6 +10,15 @@ html
     link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet" /
     script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" 
     script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" 
+    
 
   body
-    = yield
+    .container
+      .row
+        .col-xs-6
+          h1= link_to "My Store", root_path
+        .col-xs-6.text-right
+          h1.cart-text= render 'layouts/cart_text'
+      hr/
+      = yield
+

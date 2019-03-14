@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       get :products
     end
   end
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 end

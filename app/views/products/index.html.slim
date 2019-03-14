@@ -1,4 +1,5 @@
 div.container
+
   = link_to "Create a product", new_product_path
   - if user_signed_in?
     = link_to "Sign out", destroy_admin_session_path, :method => :delete
@@ -25,4 +26,8 @@ div.container
       th Status
       th Action
     = render partial: 'product', collection: @products
+
   = paginate @products
+
+  - @products.each do |product|
+    = render "product_row", product: product, order_item: @order_item
