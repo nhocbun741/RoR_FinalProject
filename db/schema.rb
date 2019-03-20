@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_051622) do
+ActiveRecord::Schema.define(version: 2019_03_18_094226) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2019_03_12_051622) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "purchased_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -35,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_03_12_051622) do
     t.float "total_price"
     t.integer "product_id"
     t.integer "order_id"
+    t.integer "cart_id"
+    t.index ["cart_id"], name: "index_order_items_on_cart_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -48,6 +56,16 @@ ActiveRecord::Schema.define(version: 2019_03_12_051622) do
     t.float "total"
     t.integer "order_status_id"
     t.index ["order_status_id"], name: "index_orders_on_order_status_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "action"
+    t.integer "amount"
+    t.string "authorization"
+    t.string "message"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

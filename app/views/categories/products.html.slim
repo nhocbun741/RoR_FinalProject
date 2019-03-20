@@ -12,21 +12,28 @@ div.container
                 - @categories.last(@categories.size-7).each do |category|
                     li
                         a href="#{products_category_path(category)}"  = category.NameCategory
-
-    table.table.table-hover
-        tr
-            th Name
-            th Price
-            th Quantity
-
-        - @products.each do |product|
-            tr
-                td= product.Name
-                td
-                    = product.Price
-                    = " "
-                    = product.CurrencyCode
-                td= product.Quantity
-                td= product.Status
+    .row
+    br
+    - @products.each do |product|
+        .col-sm-3
+            div
+                 img style=("width: 260px; height: 150px;border: 1px solid white;border-radius:5px;") src="#{product.ProductPicUrl.url}" alt="Image"
+            = form_for @order_item, remote: true do |f|
+                h5.text-center
+                  | Name:
+                  span style=("color: green") = product.Name
+                h5.text-center
+                  | Unit Price:
+                  span style=("color: green") = number_to_currency product.Price
+                .input-group
+                = f.hidden_field :quantity, value: 1, class: "form-control", min: 1
+                br
+                div style=("position:relative")
+                  .input-group-btn
+                    = f.hidden_field :product_id, value: product.id
+                    = f.submit "Add to Cart", class: "btn btn-primary", style: "margin-left: 30px;border-radius: 5px"
+                  a.btn.btn-primary style=("margin-left: 160px;top:0px;position:absolute;") href="#{product_path(product)}" Details
+                br
+                br
     = paginate @products
 

@@ -1,0 +1,5 @@
+= form_for @payment, remote: true do |f|
+    .input-group
+       .input-group
+        = f.text_field :amount, value: "#{ current_order.subtotal}"
+        = f.submit

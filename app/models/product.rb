@@ -2,7 +2,7 @@ class Product < ApplicationRecord
     validates :ProductID,
               :WeightMeasure,
               :Description,
-              :ProductPicUrl,
+            #   :ProductPicUrl,
               :Price,
               :Width,
               :Depth,
@@ -22,4 +22,5 @@ class Product < ApplicationRecord
     has_many :order_items
 
     default_scope { where(active: true) }
+    mount_uploader :ProductPicUrl, ImageUploader
 end

@@ -1,6 +1,7 @@
 class OrderItem < ApplicationRecord
     belongs_to :product
     belongs_to :order
+    # belongs_to :payment
 
     validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
     validate :product_present
@@ -19,7 +20,7 @@ class OrderItem < ApplicationRecord
       end
     end
   
-    def total_price
+    def self.total_price
       unit_price * quantity
     end
   
@@ -42,4 +43,6 @@ class OrderItem < ApplicationRecord
       self[:total_price] = quantity * self[:unit_price]
     end
 
+    
+    
 end
