@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_094226) do
 
   create_table "categories", force: :cascade do |t|
     t.string "NameCategory"
-    t.datetime "posted_at", default: "2019-03-08 00:00:00"
+    t.datetime "posted_at", default: "2019-03-20 00:00:00"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_094226) do
     t.float "WeightMeasure"
     t.string "WeightUnit", default: "KG"
     t.text "Description"
-    t.date "DateOfSale", default: "2019-03-07"
+    t.date "DateOfSale", default: "2019-03-20"
     t.string "ProductPicUrl"
     t.string "Status"
     t.integer "Quantity", default: 0
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_094226) do
     t.integer "supplier_id"
     t.string "Name"
     t.float "Price"
-    t.datetime "posted_at", default: "2019-03-08 00:00:00"
+    t.datetime "posted_at", default: "2019-03-20 00:00:00"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "active"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_094226) do
 
   create_table "suppliers", force: :cascade do |t|
     t.string "SupplierName"
-    t.datetime "posted_at", default: "2019-03-08 00:00:00"
+    t.datetime "posted_at", default: "2019-03-20 00:00:00"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

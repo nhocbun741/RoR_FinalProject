@@ -1,5 +1,5 @@
 class Order < ApplicationRecord 
-    belongs_to :order_status, optional: true
+    belongs_to :order_status
     has_many :order_items
     before_create :set_order_status
     before_save :update_subtotal
@@ -16,6 +16,4 @@ class Order < ApplicationRecord
     def update_subtotal
     self[:subtotal] = subtotal
     end
-    
-    
 end
